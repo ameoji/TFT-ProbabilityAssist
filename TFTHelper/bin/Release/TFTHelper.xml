@@ -1,0 +1,118 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+TFTHelper
+</name>
+</assembly>
+<members>
+<member name="T:TFTHelper.My.MyWpfExtension">
+ <summary>
+ WPF のマイ名前空間で使用できるプロパティを定義するためのモジュール
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:TFTHelper.My.MyWpfExtension.Application">
+ <summary>
+ 実行中のアプリケーション用のアプリケーション オブジェクトを返します
+ </summary>
+</member>
+<member name="P:TFTHelper.My.MyWpfExtension.Computer">
+ <summary>
+ ホスト コンピューターに関する情報を返します。
+ </summary>
+</member>
+<member name="P:TFTHelper.My.MyWpfExtension.User">
+ <summary>
+ 現在のユーザーに関する情報を返します。現在の
+ Windows ユーザー資格情報でアプリケーションを実行する場合は、My.User.InitializeWithWindowsUser() を呼び出してください。
+ </summary>
+</member>
+<member name="P:TFTHelper.My.MyWpfExtension.Log">
+ <summary>
+ アプリケーション ログを返します。リスナーは、アプリケーションの構成ファイルを使用して構成できます。
+ </summary>
+</member>
+<member name="P:TFTHelper.My.MyWpfExtension.Windows">
+ <summary>
+ プロジェクトで定義されている Windows の集合を返します。
+ </summary>
+</member>
+<member name="T:TFTHelper.My.Resources.Resources">
+<summary>
+  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+</summary>
+</member>
+<member name="P:TFTHelper.My.Resources.Resources.ResourceManager">
+<summary>
+  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+</summary>
+</member>
+<member name="P:TFTHelper.My.Resources.Resources.Culture">
+<summary>
+  すべてについて、現在のスレッドの CurrentUICulture プロパティをオーバーライドします
+  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+</summary>
+</member>
+<member name="P:TFTHelper.My.Resources.Resources._Exit">
+<summary>
+  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+</summary>
+</member>
+<member name="P:TFTHelper.My.Resources.Resources.Gear">
+<summary>
+  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+</summary>
+</member>
+<member name="P:TFTHelper.My.Resources.Resources.Minus">
+<summary>
+  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+</summary>
+</member>
+<member name="P:TFTHelper.My.Resources.Resources.Plus">
+<summary>
+  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+</summary>
+</member>
+<member name="P:TFTHelper.My.Resources.Resources.TFTLogo">
+<summary>
+  型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+</summary>
+</member>
+<member name="T:TFTHelper.Settings">
+<summary>
+Settings
+</summary>
+</member>
+<member name="M:TFTHelper.Settings.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:TFTHelper.Application">
+<summary>
+Application
+</summary>
+</member>
+<member name="M:TFTHelper.Application.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="M:TFTHelper.Application.Main">
+<summary>
+Application Entry Point.
+</summary>
+</member>
+<member name="T:TFTHelper.MainWindow">
+<summary>
+MainWindow
+</summary>
+</member>
+<member name="M:TFTHelper.MainWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+</members>
+</doc>
