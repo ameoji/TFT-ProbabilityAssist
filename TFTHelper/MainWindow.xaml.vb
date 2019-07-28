@@ -1,4 +1,4 @@
-﻿
+﻿Imports System.Windows.Media.Animation
 Class MainWindow
     Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
         Dim Target_Default As Integer = 1
@@ -142,5 +142,15 @@ Class MainWindow
         RetrunBlock.Add(DefaultValue.Default.Lv5_Champion_Max)
         Return RetrunBlock
     End Function
+
+
+    Private Sub CloseApp(sender As Object, e As RoutedEventArgs) Handles [Exit].Click
+        Me.Close()
+    End Sub
+
+    Public Sub MoveWindow(sender As Object, e As Primitives.DragDeltaEventArgs)
+        Left += e.HorizontalChange
+        Top += e.VerticalChange
+    End Sub
 
 End Class

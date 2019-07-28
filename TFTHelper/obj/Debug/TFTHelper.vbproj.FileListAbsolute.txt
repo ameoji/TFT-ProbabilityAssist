@@ -32,3 +32,5 @@ E:\VScoderep\TFT-ProbabilityAssist\TFTHelper\obj\Debug\TFTHelper.vbproj.CoreComp
 E:\VScoderep\TFT-ProbabilityAssist\TFTHelper\obj\Debug\TFTHelper.exe
 E:\VScoderep\TFT-ProbabilityAssist\TFTHelper\obj\Debug\TFTHelper.xml
 E:\VScoderep\TFT-ProbabilityAssist\TFTHelper\obj\Debug\TFTHelper.pdb
+E:\VScoderep\TFT-ProbabilityAssist\TFTHelper\obj\Debug\Settings.g.vb
+E:\VScoderep\TFT-ProbabilityAssist\TFTHelper\obj\Debug\Settings.baml

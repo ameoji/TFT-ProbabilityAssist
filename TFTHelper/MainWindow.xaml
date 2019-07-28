@@ -3,81 +3,210 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:TFTHelper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="315"
-        Loaded="Window_Loaded">
+        Title="MainWindow" Height="235" Width="394.5"
+        Loaded="Window_Loaded"
+        x:Name="parent"
+        Background="Transparent"
+        WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <system:Double x:Key="DefaultSize" >15.0</system:Double>
+        <system:Double x:Key="DefaultHight" >30.0</system:Double>
+        <system:Double x:Key="ButtonWidth">30.0</system:Double>
+        <system:Double x:Key="ButtonHeight">30.0</system:Double>
+        <system:Double x:Key="OptionWidth">76.0</system:Double>
+        <system:Double x:Key="OptionHeight">20.0</system:Double>
+        <SolidColorBrush x:Key="DefaultColor" Color="#b39552"/>
+        <BitmapImage x:Key="Minus" UriSource="./Resources/Minus.png"/>
+        <BitmapImage x:Key="Plus" UriSource="./Resources/Plus.png"/>
+        <BitmapImage x:Key="Logo" UriSource="./Resources/TFTLogo.png"/>
+        <BitmapImage x:Key="Gear" UriSource="./Resources/Gear.png"/>
+        <BitmapImage x:Key="Exit" UriSource="./Resources/Exit.png"/>
+        <HorizontalAlignment x:Key="%Align">Right</HorizontalAlignment>
+        <system:Double x:Key="%Width">58</system:Double>
+        <system:Double x:Key="GeneralCanvusLeft">50</system:Double>
+        <system:Double x:Key="TargetWidth">40</system:Double>
+        <Storyboard x:Key="storyBoard">
+            <DoubleAnimation Storyboard.TargetName="SettingForm"
+                             Storyboard.TargetProperty="(Canvas.Left)"
+                             From="100" To="200"
+                             Duration="0:0:3"/>
+        </Storyboard>
+    </Window.Resources>
 
     <Canvas>
-        <Button Name="Lv_Minus" Uid="0,0"
-                Content="-" Width="30" Canvas.Left="10" Canvas.Top="23" Height="20"/>
-        <Button Name="Lv_Plus"  Uid="0,1"
-                Content="+" Width="30" Canvas.Left="85" Canvas.Top="23" Height="20"/>
-        <TextBlock Name="Lv_TextBlock" Text="x" Width="45" Height="20" Padding="0,1,0,0"
-                   Canvas.Left="40" Canvas.Top="23" 
+        <!--<Canvas Name="SettingForm">
+            <Rectangle  Height="100" Width="100" Canvas.Left="287" Canvas.Top="127"
+                    RadiusX="5" RadiusY="5" Fill="#191c20" Stroke="#b39552"/>
+            <Label Width="76" Height="20" Canvas.Left="305" Canvas.Top="178" HorizontalContentAlignment="Center" BorderBrush="#b39552" BorderThickness="1"
+                       Content="利用規約" FontSize="9" Background="#191c20" Foreground="{StaticResource DefaultColor}"
+                       Padding="0,3,0,0">
+                <Label.ToolTip>
+                    <TextBlock TextWrapping="Wrap" MaxWidth="300">
+                        このツールは、ライアットゲームズが公式承認するものではなく、
+                        ライアットゲームズ又はリーグ・オブ・レジェンドの製作・管理に正式に関与したいかなる者の見解・意見に基づくものではありません。
+                        リーグ・オブ・レジェンド及びライアットゲームズは、Riot Games, Inc.の商標又は登録商標です。
+                        リーグ・オブ・レジェンド © Riot Games, Inc.
+                    </TextBlock>
+                    
+                </Label.ToolTip>
+            </Label>
+            <Button Name="CloseAPP" Uid="0,0" Width="{StaticResource OptionWidth}" Height="{StaticResource OptionHeight}" Content="Close App"
+                    Background="Transparent" BorderBrush="#b39552" Foreground="#910000"
+                    Canvas.Left="305" Canvas.Top="202" >
+            </Button>
+        </Canvas>-->
+
+        <Thumb DragDelta="MoveWindow"  Height="233" Width="317" Canvas.Left="-2" Canvas.Top="1">
+            <Thumb.Template>
+                <ControlTemplate>
+                    <Rectangle  Height="220" Width="300" RadiusX="5" RadiusY="5" Fill="#191c20"
+                                Margin="-4,-1,4,1" Stroke="#b39552"
+                                />
+                </ControlTemplate>
+            </Thumb.Template>
+        </Thumb>
+
+        <!--r,g,b25,28,32-->
+        <Label Height="54" Canvas.Left="198" Width="106" Canvas.Top="6">
+            <Image Source="{StaticResource Logo}" Width="96" Height="46"/>
+            <Label.ToolTip>
+                <TextBlock TextWrapping="Wrap" MaxWidth="300">
+                        このツールは、ライアットゲームズが公式承認するものではなく、
+                        ライアットゲームズ又はリーグ・オブ・レジェンドの製作・管理に正式に関与したいかなる者の見解・意見に基づくものではありません。
+                        リーグ・オブ・レジェンド及びライアットゲームズは、Riot Games, Inc.の商標又は登録商標です。
+                        リーグ・オブ・レジェンド © Riot Games, Inc.
+                </TextBlock>
+            </Label.ToolTip>
+        </Label>
+
+        <Button Name="Exit" Uid="0,0" Width="25" Height="25" BorderBrush="Transparent" Background="Transparent"
+                 Canvas.Left="270" Canvas.Top="197" >
+            <Image Source="{StaticResource Exit}" Width="20"/>
+        </Button>
+
+
+        <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="18">
+            <Label Content="Player Lv." FontSize="{StaticResource DefaultSize}" Height="{StaticResource DefaultHight}" Foreground="{StaticResource DefaultColor}" Canvas.Top="17" Canvas.Left="6"/>
+            <Button Name="Lv_Minus" Uid="0,0" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}" BorderBrush="Transparent" Background="Transparent"
+                 Canvas.Left="8" Canvas.Top="12" >
+                <Image Source="{StaticResource Minus}"/>
+            </Button>
+            <TextBlock Name="Lv_TextBlock" Text="1" Width="46" Height="24" Padding="0,1,0,0" Foreground="{StaticResource DefaultColor}"
+                   Canvas.Left="34" Canvas.Top="10" FontSize="{StaticResource DefaultSize}"
                    TextAlignment="Center" VerticalAlignment="Center" />
-
-        <Label Content="Lv.1" Canvas.Left="10" Canvas.Top="56"/>
-        <Label Content="Lv.2" Canvas.Left="10" Canvas.Top="87"/>
-        <Label Content="Lv.3" Canvas.Left="10" Canvas.Top="118"/>
-        <Label Content="Lv.4" Canvas.Left="10" Canvas.Top="149"/>
-        <Label Content="Lv.5" Canvas.Left="10" Canvas.Top="180"/>
-        
-        <!--そのレベルのチャンピオンが出る確率-->
-        <TextBlock x:Name ="Pro_Lv1_General" Text="0%" Canvas.Left="40" Canvas.Top="62" Width="35"/>
-        <TextBlock x:Name ="Pro_Lv2_General" Text="0%" Canvas.Left="48" Canvas.Top="87"/>
-        <TextBlock x:Name ="Pro_Lv3_General" Text="0%" Canvas.Left="48" Canvas.Top="118"/>
-        <TextBlock x:Name ="Pro_Lv4_General" Text="0%" Canvas.Left="48" Canvas.Top="149"/>
-        <TextBlock x:Name ="Pro_Lv5_General" Text="0%" Canvas.Left="40" Canvas.Top="183" Width="35" Height="20"/>
-
-        <!--目当てのチャンピオンが出る確率-->
-        <TextBlock Name ="Pro_Lv1" Text="0%"  RenderTransformOrigin="0.587,5.263" Canvas.Left="133" Canvas.Top="56"/>
-        <TextBlock Name ="Pro_Lv2" Text="0%"  RenderTransformOrigin="0.587,5.263" Canvas.Left="133" Canvas.Top="87"/>
-        <TextBlock Name ="Pro_Lv3" Text="0%"  RenderTransformOrigin="0.587,5.263" Canvas.Left="133" Canvas.Top="118"/>
-        <TextBlock Name ="Pro_Lv4" Text="0%"  RenderTransformOrigin="0.587,5.263" Canvas.Left="133" Canvas.Top="149"/>
-        <TextBlock Name ="Pro_Lv5" Text="0%"   RenderTransformOrigin="0.587,5.263" Canvas.Left="133" Canvas.Top="180"/>
+            <Button Name="Lv_Plus"  Uid="0,1" BorderBrush="Transparent" Background="Transparent"
+                Canvas.Left="90" Canvas.Top="10" Width="{StaticResource ButtonWidth}" Height="{StaticResource ButtonHeight}">
+                <Image Source="{StaticResource Plus}"/>
+            </Button>
+        </StackPanel>
+        <Label Content="出現率" Canvas.Left="48" Canvas.Top="52" HorizontalContentAlignment="Center" Width="58" Foreground="{StaticResource DefaultColor}"/>
+        <Label Content="TargetChampion出現率" Canvas.Left="123" Canvas.Top="50" Width="144" HorizontalContentAlignment="Center" Foreground="{StaticResource DefaultColor}"/>
 
 
+        <StackPanel Orientation="Horizontal" Canvas.Top="73" Canvas.Left="10">
+            <StackPanel>
+                <Label Content="Lv.1" FontSize="{StaticResource DefaultSize}" Height="{StaticResource DefaultHight}" Foreground="{StaticResource DefaultColor}"/>
+                <Label Content="Lv.2" FontSize="{StaticResource DefaultSize}" Height="{StaticResource DefaultHight}" Foreground="{StaticResource DefaultColor}"/>
+                <Label Content="Lv.3" FontSize="{StaticResource DefaultSize}" Height="{StaticResource DefaultHight}" Foreground="{StaticResource DefaultColor}"/>
+                <Label Content="Lv.4" FontSize="{StaticResource DefaultSize}" Height="{StaticResource DefaultHight}" Foreground="{StaticResource DefaultColor}"/>
+                <Label Content="Lv.5" FontSize="{StaticResource DefaultSize}" Height="{StaticResource DefaultHight}" Foreground="{StaticResource DefaultColor}"/>
+            </StackPanel>
+            <StackPanel>
+                <!--そのレベルのチャンピオンが出る確率-->
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock x:Name ="Pro_Lv1_General" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,1,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock x:Name ="Pro_Lv2_General" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,1,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock x:Name ="Pro_Lv3_General" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,1,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock x:Name ="Pro_Lv4_General" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,1,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock x:Name ="Pro_Lv5_General" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,1,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+            </StackPanel>
+            <StackPanel>
+                <!--目当てのチャンピオンが出る確率-->
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name ="Pro_Lv1" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name ="Pro_Lv2" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name ="Pro_Lv3" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name ="Pro_Lv4" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+                <Border Width="{StaticResource %Width}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name ="Pro_Lv5" Text="0%" FontSize="{StaticResource DefaultSize}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="{StaticResource DefaultColor}"/>
+                </Border>
+            </StackPanel>
+            <StackPanel>
+                <Button Name="Lv1_Minus" Uid="1,0" Canvas.Left="192" Canvas.Top="59" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Minus}"/>
+                </Button>
+                <Button Name="Lv2_Minus" Uid="2,0" Canvas.Left="192" Canvas.Top="90"  Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Minus}"/>
+                </Button>
+                <Button Name="Lv3_Minus" Uid="3,0" Canvas.Left="192" Canvas.Top="121" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Minus}"/>
+                </Button>
+                <Button Name="Lv4_Minus" Uid="4,0" Canvas.Left="192" Canvas.Top="152" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Minus}"/>
+                </Button>
+                <Button Name="Lv5_Minus" Uid="5,0" Canvas.Left="192" Canvas.Top="183" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Minus}"/>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <Border Width="{StaticResource TargetWidth}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name="Lv1_TextBlock" Text="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource DefaultColor}" />
+                </Border>
+                <Border Width="{StaticResource TargetWidth}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name="Lv2_TextBlock" Text="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource DefaultColor}" />
+                </Border>
+                <Border Width="{StaticResource TargetWidth}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name="Lv3_TextBlock" Text="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource DefaultColor}" />
+                </Border>
+                <Border Width="{StaticResource TargetWidth}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name="Lv4_TextBlock" Text="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource DefaultColor}" />
+                </Border>
+                <Border Width="{StaticResource TargetWidth}" Height="{StaticResource DefaultHight}" >
+                    <TextBlock Name="Lv5_TextBlock" Text="1" TextAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource DefaultColor}" />
+                </Border>
+            </StackPanel>
+            <StackPanel>
+                <Button Name="Lv1_Plus" Uid="1,1" Canvas.Left="266" Canvas.Top="59" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Plus}"/>
+                </Button>
+                <Button Name="Lv2_Plus" Uid="2,1" Canvas.Left="266" Canvas.Top="90" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Plus}"/>
+                </Button>
+                <Button Name="Lv3_Plus" Uid="3,1" Canvas.Left="266" Canvas.Top="121" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Plus}"/>
+                </Button>
+                <Button Name="Lv4_Plus" Uid="4,1" Canvas.Left="266" Canvas.Top="152" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Plus}"/>
+                </Button>
+                <Button Name="Lv5_Plus" Uid="5,1" Canvas.Left="266" Canvas.Top="183" Height="{StaticResource ButtonHeight}" Width="{StaticResource ButtonWidth}" BorderBrush="Transparent" Background="Transparent">
+                    <Image Source="{StaticResource Plus}"/>
+                </Button>
 
-        <Button Name="Lv1_Minus" Uid="1,0"
-                Content="-" Width="30" Canvas.Left="192" Canvas.Top="59" Height="20"/>
-        <Button Name="Lv1_Plus" Uid="1,1"
-                Content="+" Width="30" Canvas.Left="266" Canvas.Top="59" Height="20"/>
-        <TextBlock Name="Lv1_TextBlock" Text="1" Width="44" Height="20" Padding="0,1,0,0"
-            Canvas.Left="222" Canvas.Top="59" 
-            TextAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
 
-        <Button Name="Lv2_Minus" Uid="2,0"
-                Content="-" Width="30" Canvas.Left="192" Canvas.Top="90" Height="20"/>
-        <Button Name="Lv2_Plus" Uid="2,1"
-                Content="+" Width="30" Canvas.Left="266" Canvas.Top="90" Height="20"/>
-        <TextBlock Name="Lv2_TextBlock" Text="1" Width="44" Height="20" Padding="0,1,0,0"
-            Canvas.Left="222" Canvas.Top="90" 
-            TextAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel>
 
-        <Button Name="Lv3_Minus" Uid="3,0"
-                Content="-" Width="30" Canvas.Left="192" Canvas.Top="121" Height="20"/>
-        <Button Name="Lv3_Plus" Uid="3,1"
-                Content="+" Width="30" Canvas.Left="266" Canvas.Top="121" Height="20"/>
-        <TextBlock Name="Lv3_TextBlock" Text="1" Width="44" Height="20" Padding="0,1,0,0"
-            Canvas.Left="222" Canvas.Top="121" 
-            TextAlignment="Center" VerticalAlignment="Center" />
 
-        <Button Name="Lv4_Minus" Uid="4,0"
-                Content="-" Width="30" Canvas.Left="192" Canvas.Top="152" Height="20"/>
-        <Button Name="Lv4_Plus" Uid="4,1"
-                Content="+" Width="30" Canvas.Left="266" Canvas.Top="152" Height="20"/>
-        <TextBlock Name="Lv4_TextBlock" Text="1" Width="44" Height="20" Padding="0,1,0,0"
-            Canvas.Left="222" Canvas.Top="152" 
-            TextAlignment="Center" VerticalAlignment="Center" />
 
-        <Button Name="Lv5_Minus" Uid="5,0"
-                Content="-" Width="30" Canvas.Left="192" Canvas.Top="183" Height="20"/>
-        <Button Name="Lv5_Plus" Uid="5,1"
-                Content="+" Width="30" Canvas.Left="266" Canvas.Top="183" Height="20"/>
-        <TextBlock Name="Lv5_TextBlock" Text="1" Width="44" Height="20" Padding="0,1,0,0"
-            Canvas.Left="222" Canvas.Top="183" 
-            TextAlignment="Center" VerticalAlignment="Center" />
 
 
     </Canvas>

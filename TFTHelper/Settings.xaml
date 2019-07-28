@@ -1,0 +1,46 @@
+﻿<Window x:Class="Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TFTHelper"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Settings" Height="215.177" Width="163.826"
+        Background="Transparent"
+        WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <system:Double x:Key="OptionWidth">76.0</system:Double>
+        <system:Double x:Key="OptionHeight">20.0</system:Double>
+        <SolidColorBrush x:Key="DefaultColor" Color="#b39552"/>
+    </Window.Resources>
+    <Canvas Margin="0,0,487,0">
+        <Thumb DragDelta="MoveWindow"  Height="218" Width="168">
+            <Thumb.Template>
+                <ControlTemplate>
+                    <Rectangle  Height="200" Width="150" RadiusX="5" RadiusY="5" Fill="#191c20"
+                                Margin="-4,-1,4,1" Stroke="#b39552"
+                                />
+                </ControlTemplate>
+            </Thumb.Template>
+        </Thumb>
+        <Label Width="76" Height="20" Canvas.Left="13" Canvas.Top="146" HorizontalContentAlignment="Center" BorderBrush="#b39552" BorderThickness="1"
+                       Content="利用規約" FontSize="9" Background="#191c20" Foreground="{StaticResource DefaultColor}"
+                       Padding="0,3,0,0">
+            <Label.ToolTip>
+                <TextBlock TextWrapping="Wrap" MaxWidth="300">
+                        このツールは、ライアットゲームズが公式承認するものではなく、
+                        ライアットゲームズ又はリーグ・オブ・レジェンドの製作・管理に正式に関与したいかなる者の見解・意見に基づくものではありません。
+                        リーグ・オブ・レジェンド及びライアットゲームズは、Riot Games, Inc.の商標又は登録商標です。
+                        リーグ・オブ・レジェンド © Riot Games, Inc.
+                </TextBlock>
+
+            </Label.ToolTip>
+        </Label>
+        <Button Name="CloseAPP" Uid="0,0" Width="{StaticResource OptionWidth}" Height="{StaticResource OptionHeight}" Content="Close App"
+                    Background="Transparent" BorderBrush="#b39552" Foreground="#910000"
+                    Canvas.Left="13" Canvas.Top="170" >
+        </Button>
+
+    </Canvas>
+</Window>
